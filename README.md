@@ -1,6 +1,6 @@
 # color-palette-vue
 
-![Screen Shot](/public/ss_2020-12-04_180141.png)
+![Screen Shot](/public/ss_2020_-12-04_1817.png)
 
 ## Project setup
 ```
