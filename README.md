@@ -1,5 +1,7 @@
 # color-palette-vue
 
+![Screen Shot](public/ss_2020-12-04_180141.png)
+
 ## Project setup
 ```
 npm install
