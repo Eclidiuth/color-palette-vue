@@ -1,7 +1,7 @@
 <template>
   <div>
     <label>
-      Color: <input type="text" v-model="newPaletteColor">
+      Color: <input type="text" v-model="newPaletteColor" placeholder="#ffaa00">
     </label>
     <label>
       Platte Name
@@ -93,7 +93,7 @@ select {
   font-size: 14px;
   font-family: 'Arial Nova';
   padding: 8px 16px;
-  width: 140px;
+  width: 160px;
 }
 
 button {

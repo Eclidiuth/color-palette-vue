@@ -1,60 +1,66 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+  <div id="app">
+    <aside>
+      <div class="container">
+        <h1>Color Palettes</h1>
+        <color-palette-add-color-form />
       </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
-    </v-main>
-  </v-app>
+    </aside>
+    <main>
+      <div class="container">
+        <color-palette class="color-palette" v-for="(palette, index) in colorPalettes" :palette="palette" :key="index"/>
+      </div>
+    </main>
+  </div>
 </template>
 
+<style lang="scss">
+body {
+  background: #fafafa;
+  font-family: 'Arial Nova', 'Yu Gothic', 游ゴシック, sans-serif;
+  font-size: 14px;
+}
+</style>
+<style lang="scss" scoped>
+#app {
+  display: flex;
+  padding-top: 32px;
+
+  aside {
+    width: 25%;
+
+    h1 {
+      font-weight: 300;
+    }
+  }
+  main {
+    width: 75%;
+
+    .color-palette {
+      margin-bottom: 24px;
+    }
+  }
+
+  .container {
+    margin: auto;
+    width: 90%;
+  }
+}
+</style>
+
 <script>
-import HelloWorld from './components/HelloWorld';
+import ColorPalette from '@/components/ColorPalette.vue'
+import ColorPaletteAddColorForm from '@/components/ColorPaletteAddColorForm.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
-
   components: {
-    HelloWorld,
+    ColorPalette,
+    ColorPaletteAddColorForm
   },
-
-  data: () => ({
-    //
-  }),
-};
+  computed: {
+    ...mapGetters(['colorPalettes'])
+  }
+}
 </script>
