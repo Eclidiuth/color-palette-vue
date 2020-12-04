@@ -1,66 +1,32 @@
 <template>
   <div id="app">
-    <aside>
-      <div class="container">
-        <h1>Color Palettes</h1>
-        <color-palette-add-color-form />
-      </div>
-    </aside>
-    <main>
-      <div class="container">
-        <color-palette class="color-palette" v-for="(palette, index) in colorPalettes" :palette="palette" :key="index"/>
-      </div>
-    </main>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-body {
-  background: #fafafa;
-  font-family: 'Arial Nova', 'Yu Gothic', 游ゴシック, sans-serif;
-  font-size: 14px;
-}
-</style>
-<style lang="scss" scoped>
+<style>
 #app {
-  display: flex;
-  padding-top: 32px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-  aside {
-    width: 20%;
+#nav {
+  padding: 30px;
+}
 
-    h1 {
-      font-weight: 300;
-    }
-  }
-  main {
-    width: 80%;
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
 
-    .color-palette {
-      margin-bottom: 24px;
-    }
-  }
-
-  .container {
-    margin: auto;
-    width: 90%;
-  }
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
-
-<script>
-import ColorPalette from '@/components/ColorPalette.vue'
-import ColorPaletteAddColorForm from '@/components/ColorPaletteAddColorForm.vue'
-import { mapGetters } from 'vuex'
-
-export default {
-  name: 'App',
-  components: {
-    ColorPalette,
-    ColorPaletteAddColorForm
-  },
-  computed: {
-    ...mapGetters(['colorPalettes'])
-  }
-}
-</script>
