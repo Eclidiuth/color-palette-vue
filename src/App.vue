@@ -1,28 +1,66 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <aside>
+      <div class="container">
+        <h1>Color Palettes</h1>
+        <color-palette-add-color-form />
+      </div>
+    </aside>
+    <main>
+      <div class="container">
+        <color-palette class="color-palette" v-for="(palette, index) in colorPalettes" :palette="palette" :key="index"/>
+      </div>
+    </main>
   </div>
 </template>
 
+<style lang="scss">
+body {
+  background: #fafafa;
+  font-family: 'Arial Nova', 'Yu Gothic', 游ゴシック, sans-serif;
+  font-size: 14px;
+}
+</style>
+<style lang="scss" scoped>
+#app {
+  display: flex;
+  padding-top: 32px;
+
+  aside {
+    width: 20%;
+
+    h1 {
+      font-weight: 300;
+    }
+  }
+  main {
+    width: 80%;
+
+    .color-palette {
+      margin-bottom: 24px;
+    }
+  }
+
+  .container {
+    margin: auto;
+    width: 90%;
+  }
+}
+</style>
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ColorPalette from '@/components/ColorPalette.vue'
+import ColorPaletteAddColorForm from '@/components/ColorPaletteAddColorForm.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ColorPalette,
+    ColorPaletteAddColorForm
+  },
+  computed: {
+    ...mapGetters(['colorPalettes'])
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
